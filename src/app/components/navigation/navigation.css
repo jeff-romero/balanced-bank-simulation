@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#navbar {
+    gap: 1vw;
+    background-color: red;
+}
+
+.dropdown-title {
+    color: white;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.dropdown {
+    width: 10vw;
+    display: inline-block;
+    background-color: rgb(49, 49, 141);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: red;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 2vw 2vw;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
