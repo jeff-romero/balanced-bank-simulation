@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +7,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './user-session.html',
   styleUrl: './user-session.css',
 })
-export class UserSession {
+export class UserSession implements OnInit {
   logIn = 'Log In';
   myAccount = 'My Account';
+  // property binding - class
+  loginStatus = 'fa fa-lock';
+
+  ngOnInit() {
+
+  }
 }
