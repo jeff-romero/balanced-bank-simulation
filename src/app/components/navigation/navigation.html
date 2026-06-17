@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="dropdown">
-        <button class="dropdown-title">{{ services }} <i class="fa fa-caret-down"></i></button>
+        <button (click)="hover($event)" class="dropdown-title">{{ services }} <i class="fa fa-caret-down"></i></button>
         <div class="dropdown-content">
             <a routerLink="">Widhdraw Funds</a>
             <a routerLink="">Transfer Funds</a>

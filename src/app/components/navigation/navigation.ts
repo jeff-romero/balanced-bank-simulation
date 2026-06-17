@@ -17,4 +17,9 @@ export class Navigation {
 
     // });
   }
+
+  hover(event: PointerEvent): void {
+    event.preventDefault();
+    console.log("hovered");
+  }
 }

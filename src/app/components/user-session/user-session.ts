@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -12,6 +12,7 @@ export class UserSession implements OnInit {
   myAccount = 'My Account';
   // property binding - class
   loginStatus = 'fa fa-lock';
+  @Input() isLoggedIn:boolean = false;
 
   ngOnInit() {
 

@@ -9,6 +9,11 @@ a {
     text-decoration: none;
 }
 
+#home {
+    text-decoration: none;
+    color: oklch(55.697% 0.26867 299.639);
+}
+
 #menu {
     display: flex;
 }
