@@ -1,6 +1,6 @@
 import { Account } from './app/shared/models/account';
 
-export const sammpleAccounts: Account[] = [
+export const sampleAccounts: Account[] = [
     {
         accountNumber: 5555555555,
         firstName: 'John',
