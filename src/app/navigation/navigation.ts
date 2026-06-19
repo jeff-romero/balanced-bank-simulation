@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,8 +8,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './navigation.css',
 })
 export class Navigation {
+  bankName = 'Balanced Banking';
   checkingSavings = 'Checking and Savings';
   services = 'Services';
+  logIn = 'Log In';
+  myAccount = 'My Account';
+  // property binding - class
+  loginStatus = 'fa fa-lock';
+  @Input() isLoggedIn:boolean = false;
 
   constructor() {
     // let checkingSavingsDropdown = document.getElementById('checking-savings-dropdown') as HTMLSpanElement;
