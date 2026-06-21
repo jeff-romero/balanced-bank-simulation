@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Account } from '../shared/models/account';
 import { sampleAccounts } from '../../data';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ACCOUNTS_URL } from '../shared/constants/urls';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  constructor() {
+  constructor(private http:HttpClient) {
 
   }
 
-  getAll(): Account[] {
+  getAll(): Observable<Account[]> {
     // TODO: if database connection fails, return sampleAccounts
     // TODO: implement database connection
-    return sampleAccounts;
+    return this.http.get<Account[]>(ACCOUNTS_URL);
   }
 
-  transferFunds() {
-    
+  transferFunds(srcAccount: number, dstAccount: number) {
+
   }
 }
