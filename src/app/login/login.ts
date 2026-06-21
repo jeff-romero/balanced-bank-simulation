@@ -1,29 +1,47 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login implements OnInit {
+  loginForm!:FormGroup;
+  attemptedLogin = false;
   @Input() loggedIn:boolean = false;
-  email = "";
-  password = "";
 
-  constructor() {
+  constructor(private formBuilder:FormBuilder) {
   }
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+
     if (this.loggedIn) {
       
     }
   }
 
+  get formControl() {
+    return this.loginForm.controls;
+  }
+
   logIn(): void {
-    let toHash = this.password;
+    this.attemptedLogin = true;
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    let toHash:any = this.formControl['password'];
     let hash = CryptoJS.SHA256(toHash).toString();
+
+    console.log(`email: ${this.formControl['email'].value}`);
     console.log(hash);
   }
 }

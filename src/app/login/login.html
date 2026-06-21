@@ -1,11 +1,28 @@
 <div id="frame">
-    <div class="inputGroup">
-        <span class="inputCaption">Email</span>
-        <input type="text" title="Email" [value]="email" (input)="email = $any($event.target).value">
+    <div class="inputGroup" [formGroup]="loginForm">
+        <label class="inputCaption">Email</label>
+        <input type="email" title="Email" placeholder="Email" formControlName="email">
+        @if (formControl['email'].errors && attemptedLogin) {
+            <div class="errors">
+                @if (formControl['email'].errors['required']) {
+                    <div>Email required</div>
+                }
+                @if (formControl['email'].errors['email']) {
+                    <div>Email domain required</div>
+                }
+            </div>
+        }
     </div>
-    <div class="inputGroup">
-        <span class="inputCaption">Password</span>
-        <input type="text" title="Password" [value]="password" (input)="password = $any($event.target).value">
+    <div class="inputGroup" [formGroup]="loginForm">
+        <label class="inputCaption">Password</label>
+        <input type="password" title="Password" placeholder="Password" formControlName="password">
+        @if (formControl['password'].errors && attemptedLogin) {
+            <div class="errors">
+                @if (formControl['password'].errors['required']) {
+                    <div>Password required</div>
+                }
+            </div>
+        }
     </div>
-    <button id="logIn" (click)="logIn()">Log In</button>
+    <button id="logIn" type="logIn" (click)="logIn()">Log In</button>
 </div>
