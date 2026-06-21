@@ -24,5 +24,6 @@ export class Login implements OnInit {
   logIn(): void {
     let toHash = this.password;
     let hash = CryptoJS.SHA256(toHash).toString();
+    console.log(hash);
   }
 }

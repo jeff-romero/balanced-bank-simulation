@@ -13,13 +13,17 @@ export class AccountService {
 
   }
 
+  logIn(email: string, hashedPassword: string) {
+
+  }
+
   getAll(): Observable<Account[]> {
     // TODO: if database connection fails, return sampleAccounts
     // TODO: implement database connection
     return this.http.get<Account[]>(ACCOUNTS_URL);
   }
 
-  transferFunds(srcAccount: number, dstAccount: number) {
+  transferFunds(srcAccount: number, dstAccount: number, amount: number) {
 
   }
 }
