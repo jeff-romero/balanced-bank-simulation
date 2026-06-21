@@ -21,14 +21,6 @@
     }
 }
 
-#root-content {
-    display: flex;
-    flex-direction: column;
-    background-color: oklch(46.147% 0.18014 281.246);
-    height: 100dvh;
-    justify-content: center;
-}
-
 .widget-collection {
     background-color: grey;
     border-radius: 1vw;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -6,4 +6,19 @@ import { Component } from '@angular/core';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {}
+export class Login implements OnInit {
+  @Input() loggedIn:boolean = false;
+
+  constructor() {
+  }
+
+  ngOnInit() {
+    if (this.loggedIn) {
+      
+    }
+  }
+
+  logIn() {
+
+  }
+}

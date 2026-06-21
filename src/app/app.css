@@ -7,21 +7,19 @@
 
 @media screen and (min-width: 900px) {
     body {
-        /* width: 100dvw; */
         height: 100dvh;
-        /* background-color: red; */
         display: flex;
         flex-direction: column;
         align-content: center;
         padding-inline: 25%;
+        background-color: oklch(100% 0.00011 271.152);
     }
 }
 
 @media screen and (max-width: 899px) {
     body {
-        /* width: 100%; */
         height: 100dvh;
-        background-color: blue;
+        background-color: oklch(100% 0.00011 271.152);
     }
 }
 
@@ -32,6 +30,12 @@
     padding: 1vw;
 }
 
-/* app-navigation {
-    width: 
-} */
+#root-content {
+    display: flex;
+    flex-direction: column;
+    background-color: oklch(46.147% 0.18014 281.246);
+    height: 100dvh;
+    justify-content: center;
+    padding: 2vw;
+    align-items: center;
+}
