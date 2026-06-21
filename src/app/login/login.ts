@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class Login implements OnInit {
   @Input() loggedIn:boolean = false;
+  email = "";
+  password = "";
 
   constructor() {
   }
@@ -18,7 +21,8 @@ export class Login implements OnInit {
     }
   }
 
-  logIn() {
-
+  logIn(): void {
+    let toHash = this.password;
+    let hash = CryptoJS.SHA256(toHash).toString();
   }
 }

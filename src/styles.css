@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+@media screen and (min-width: 900px) {
+    body {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        padding-inline: 25%;
+        background-color: oklch(100% 0.00011 271.152);
+    }
+}
+
+@media screen and (max-width: 899px) {
+    body {
+        height: 100dvh;
+        background-color: oklch(100% 0.00011 271.152);
+    }
+}

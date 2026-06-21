@@ -1,11 +1,11 @@
 <div id="frame">
     <div class="inputGroup">
-        <span class="inputCaption">Username</span>
-        <input id="username" type="text" title="Username">
+        <span class="inputCaption">Email</span>
+        <input type="text" title="Email" [value]="email" (input)="email = $any($event.target).value">
     </div>
     <div class="inputGroup">
         <span class="inputCaption">Password</span>
-        <input id="password" type="text" title="Password">
+        <input type="text" title="Password" [value]="password" (input)="password = $any($event.target).value">
     </div>
     <button id="logIn" (click)="logIn()">Log In</button>
 </div>
