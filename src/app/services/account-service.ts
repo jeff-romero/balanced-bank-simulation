@@ -15,4 +15,8 @@ export class AccountService {
     // TODO: implement database connection
     return sampleAccounts;
   }
+
+  transferFunds() {
+    
+  }
 }

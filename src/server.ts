@@ -5,7 +5,9 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
+import cors from 'cors';
 import { join } from 'node:path';
+import { sampleAccounts } from './data';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -45,6 +47,15 @@ app.use((req, res, next) => {
       response ? writeResponseToNodeResponse(response, res) : next(),
     )
     .catch(next);
+});
+
+app.use(cors({
+  credentials:true,
+  origin:[`http://localhost:4200`]
+}));
+
+app.get("/api/accounts", (req, res) => {
+  res.send(sampleAccounts);
 });
 
 /**
