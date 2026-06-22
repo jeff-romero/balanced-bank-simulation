@@ -8,10 +8,13 @@ import express from 'express';
 import cors from 'cors';
 import { join } from 'node:path';
 import { sampleAccounts } from './data';
+import jwt from 'jsonwebtoken';
+import { secretKey } from './credentials';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
+app.use(express.json());
 const angularApp = new AngularNodeAppEngine();
 
 /**
@@ -37,6 +40,38 @@ app.use(
   }),
 );
 
+app.use(cors({
+  credentials:true,
+  origin:[`http://localhost:4200`]
+}));
+
+app.get("/api/accounts", (req, res) => {
+  res.send(sampleAccounts);
+});
+
+app.post("/api/users/login", (req, res) => {
+  const {email, password} = req.body;
+  const account = sampleAccounts.find(account => account.email === email && account.password === password);
+
+  if (account) {
+    res.send(generateTokenResponse(account));
+  }
+  else {
+    res.status(400).send("Account name or password is not valid!");
+  }
+});
+
+const generateTokenResponse = (account:any) => {
+  const token = jwt.sign({
+    email:account.email
+  }, secretKey, {
+    expiresIn:"30d"
+  });
+
+  account.token = token;
+  return account;
+}
+
 /**
  * Handle all other requests by rendering the Angular application.
  */
@@ -47,15 +82,6 @@ app.use((req, res, next) => {
       response ? writeResponseToNodeResponse(response, res) : next(),
     )
     .catch(next);
-});
-
-app.use(cors({
-  credentials:true,
-  origin:[`http://localhost:4200`]
-}));
-
-app.get("/api/accounts", (req, res) => {
-  res.send(sampleAccounts);
 });
 
 /**

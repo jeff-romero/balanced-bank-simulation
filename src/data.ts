@@ -1,10 +1,10 @@
 import { Account } from './app/shared/models/account';
 
-export const sampleAccounts: Account[] = [
+export const sampleAccounts: any[] = [
     {
         accountNumber: 5555555555,
         email: 'jdoe123@mymail.com',
-        hashedPassword: '99d5b9f4a71257cbbcf2e0245a7d90d2928f857f6ed004124b396c3ecd51eb97',
+        password: '99d5b9f4a71257cbbcf2e0245a7d90d2928f857f6ed004124b396c3ecd51eb97',
         firstName: 'John',
         lastName: 'Doe',
         checkingBalance: 24563,
@@ -43,7 +43,7 @@ export const sampleAccounts: Account[] = [
     {
         accountNumber: 7429995109,
         email: 'jsmith@realmail.com',
-        hashedPassword: '8a5de6c53d649ae79d24cb64751443413156c659efa356bff2014d3ef40a1477',
+        password: '8a5de6c53d649ae79d24cb64751443413156c659efa356bff2014d3ef40a1477',
         firstName: 'Jane',
         middleName: 'Capo',
         lastName: 'Smith',
@@ -69,7 +69,7 @@ export const sampleAccounts: Account[] = [
     {
         accountNumber: 1212121212,
         email: 'noxusforever@mymail.com',
-        hashedPassword: 'a015d8406205ad1e6b8f76e55a7e7aeb85211a32e55f497ca1dbd78aac5c2666',
+        password: 'a015d8406205ad1e6b8f76e55a7e7aeb85211a32e55f497ca1dbd78aac5c2666',
         firstName: 'Darius',
         lastName: 'Noxus',
         checkingBalance: 503,
@@ -94,7 +94,7 @@ export const sampleAccounts: Account[] = [
     {
         accountNumber: 8945613373,
         email: 'bronzehero2021@lanecamp.com',
-        hashedPassword: '21bc36666163ff49018c0a51ba21d164582f3562ad147676b15f411b5f279e89',
+        password: '21bc36666163ff49018c0a51ba21d164582f3562ad147676b15f411b5f279e89',
         firstName: 'Teemo',
         lastName: 'Shrewm',
         checkingBalance: 972

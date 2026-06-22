@@ -39,9 +39,10 @@ export class Login implements OnInit {
     }
 
     let toHash:any = this.formControl['password'];
-    let hash = CryptoJS.SHA256(toHash).toString();
+    let hash:any = CryptoJS.SHA256(toHash).toString();
+    this.formControl['password'] = hash;
 
     console.log(`email: ${this.formControl['email'].value}`);
-    console.log(hash);
+    console.log(this.formControl['password']);
   }
 }

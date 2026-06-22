@@ -1,7 +1,7 @@
 export class Account {
     accountNumber!: number;
     email!: string;
-    hashedPassword!: string;
+    password!: string;
     firstName!: string;
     middleName?: string;
     lastName!: string;
