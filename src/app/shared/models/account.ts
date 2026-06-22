@@ -8,6 +8,7 @@ export class Account {
     checkingBalance!: number;
     savingsBalance?: number;
     transactions?: Transaction[];
+    token!: string;
 }
 
 export class Transaction {

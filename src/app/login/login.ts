@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import CryptoJS from 'crypto-js';
+import { AccountService } from '../services/account-service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +15,11 @@ export class Login implements OnInit {
   loginForm!:FormGroup;
   attemptedLogin = false;
   @Input() loggedIn:boolean = false;
+  returnUrl = '';
 
-  constructor(private formBuilder:FormBuilder) {
+  // injections
+  constructor(private formBuilder:FormBuilder, private accountService:AccountService, private activatedRoute: ActivatedRoute, private router:Router) {
+
   }
 
   ngOnInit() {
@@ -21,6 +27,8 @@ export class Login implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
 
     if (this.loggedIn) {
       
@@ -43,6 +51,13 @@ export class Login implements OnInit {
     this.formControl['password'] = hash;
 
     console.log(`email: ${this.formControl['email'].value}`);
-    console.log(this.formControl['password']);
+    console.log(`password: ${this.formControl['password']}`);
+
+    this.accountService.logIn({ 
+      email: this.formControl['email'].value,
+      password: this.formControl['password']
+    }).subscribe(() => {
+      this.router.navigateByUrl(this.returnUrl);
+    });
   }
 }

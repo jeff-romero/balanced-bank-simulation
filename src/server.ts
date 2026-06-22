@@ -50,7 +50,10 @@ app.get("/api/accounts", (req, res) => {
 });
 
 app.post("/api/users/login", (req, res) => {
+  // destructure the request body
   const {email, password} = req.body;
+  // console.log(req.body);
+
   const account = sampleAccounts.find(account => account.email === email && account.password === password);
 
   if (account) {

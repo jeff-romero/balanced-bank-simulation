@@ -2,19 +2,41 @@ import { Injectable } from '@angular/core';
 import { Account } from '../shared/models/account';
 import { sampleAccounts } from '../../data';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { ACCOUNTS_URL } from '../shared/constants/urls';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { ACCOUNT_LOGIN_URL, ACCOUNTS_URL } from '../shared/constants/urls';
+import { IAccountLogin } from '../shared/interfaces/IAccountLogin';
+import { ToastrService } from 'ngx-toastr';
+
+const ACCOUNT_KEY = 'Account';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  constructor(private http:HttpClient) {
+  // this.getAccountFromLocalStorage()
+  private accountSubject = new BehaviorSubject<Account>(new Account());
+  public accountObservable: Observable<Account>;
 
+  constructor(private http:HttpClient, private toastrService: ToastrService) {
+    this.accountObservable = this.accountSubject.asObservable();
   }
 
-  logIn(email: string, hashedPassword: string) {
-
+  logIn(accountLogin: IAccountLogin): Observable<Account> {
+    return this.http.post<Account>(ACCOUNT_LOGIN_URL, accountLogin).pipe(
+      tap({
+        next: (account: any) => {
+          // this.setAccountToLocalStorage(account);
+          this.accountSubject.next(account);
+          this.toastrService.success(
+            `Welcome to Balanced Banking, ${account.firstName}`,
+            'Login successful'
+          );
+        },
+        error: (errorResponse: any) => {
+          this.toastrService.error(errorResponse.error, 'Login failed');
+        }
+      })
+    );
   }
 
   getAll(): Observable<Account[]> {
@@ -26,4 +48,18 @@ export class AccountService {
   transferFunds(srcAccount: number, dstAccount: number, amount: number) {
 
   }
+
+  // private setAccountToLocalStorage(account: Account) {
+  //   localStorage.setItem(ACCOUNT_KEY, JSON.stringify(account));
+  // }
+
+  // private getAccountFromLocalStorage(): Account {
+  //   const accountJson = localStorage.getItem(ACCOUNT_KEY);
+
+  //   if (accountJson) {
+  //     return JSON.parse(accountJson) as Account;
+  //   }
+
+  //   return new Account();
+  // }
 }

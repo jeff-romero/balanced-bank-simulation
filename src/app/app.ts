@@ -4,10 +4,23 @@ import { Navigation } from './navigation/navigation';
 import { Home } from './home/home';
 import { Login } from './login/login';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet, Navigation, Home, Login, ReactiveFormsModule],
+  imports: [
+    RouterLink,
+    RouterOutlet,
+    Navigation,
+    Home,
+    Login,
+    ReactiveFormsModule,
+    // ToastrModule.forRoot({
+    //   timeOut:3000,
+    //   positionClass:'toast-bottom-right',
+    //   newestOnTop:false
+    // })
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
